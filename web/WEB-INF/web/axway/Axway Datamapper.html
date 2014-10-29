@@ -1,0 +1,211 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <title>Axway Datamapper</title>
+    <script type="text/javascript" src="../../js/jquery/jquery.js"></script>
+    <script type="text/javascript" src="../../js/jquery/jquery-ui.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../css/main.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/knowledge/knowledge.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/jquery/jquery-ui.css"/>
+</head>
+<script>
+    function a() {
+        $('#tabs').tabs().css('width', '1000px');
+    }
+    function show(id, url) {
+        $("#" + id).attr("src", url);
+    }
+</script>
+<body onload="a()">
+
+<div id="tabs">
+    <ul>
+        <li><a href="#Datamapper">Datamapper</a></li>
+        <li><a href="#ADF">ADF</a></li>
+        <li><a href="#Directives">Directives</a></li>
+    </ul>
+    <div id="Datamapper">
+        <img src="../../image/Axway/Datamapper-Overview.jpg" />
+        <p>
+            <span class="keyword">Datamapper</span> is a set of development tools, used for designing and building conversion
+            programs. The conversion programs are then used in integrations and executed on the XIB Server.
+            A conversion program translates between different file formats,
+            but its operation can also include program access to various applications.
+        </p>
+        <p>With Datamapper you can design conversion programs that can:</p>
+        <ul>
+            <li>Read standard EDI documents</li>
+            <li>Write standard EDI documents</li>
+            <li>Read XML documents</li>
+            <li>Write XML documents</li>
+            <li>Read application specific documents (in-house files)</li>
+            <li>Write application specific documents</li>
+            <li>Access applications through their Application Programming Interface (hereafter abbreviated to API)</li>
+        </ul>
+        <p>
+            Datamapper Client is a program that runs on a PC  It has no direct connection with the XIB server. Datamapper produces files that are used to generate components that executes on the XIB Server.
+        </p>
+        <p>Locally on the PC, Datamapper Client:
+            <ul>
+                <li>Creates and revises files describing application documents or application interfaces (ADF
+                    files).</li>
+                <li>Creates and revises files describing the mapping.</li>
+                <li>Reads the EDI standard tables describing the EDI documents.</li>
+                <li>Creates files specifying the map (Map files).</li>
+                <li>Creates files describing how to perform the mapping (Run-Time Macro files, hereafter abbreviated to RTM).</li>
+            </ul>
+        </p>
+        <p class="keyword">
+            The ADF(Application Data Format) files, RTM files, and the EDI standard tables are required for generating the components. The ADF
+        files and RTM files are automatically copied to the server whenever they are revised by Datamapper Client.
+            The component is built, tested with Datamapper Builder, and registered as a component to be run on the
+            XIB Server.
+        </p>
+    </div>
+    <div id="ADF">
+        <div class="div_chapter_title">Introduction</div>
+        <p>
+            <span class="keyword">ADF is Application Data Format.</span>
+            The ADF file defines the document structure of your data. It is built with records and fields.
+            The records group different fields together into logical groups. The fields contain the data.
+        </p>
+        <p>
+            An ADF can be of several types, for example EDI, inhouse, XML.
+        </p>
+        <hr/>
+        <div class="div_chapter_title">Create ADF</div>
+        <p>
+            <ol>
+                <li>
+                    <span class="keyword">File > New > Application</span><span
+                        style="cursor: pointer"
+                        onclick="show('CreateADF', '../../image/Axway/Datamapper-ADF1.jpg')">[show]</span>
+                </li>
+                <li>
+                    Fill the General:<span style="cursor: pointer" onclick="show('CreateADF', '../../image/Axway/Datamapper-ADF2.jpg')">[show]</span>
+                    <ul>
+                        <li><span class="keyword">Title</span>: the same as ADF name, please see the naming
+                            convertion.</li>
+                        <li><span class="keyword">Description</span>: type the description</li>
+                        <li><span class="keyword">Directives</span>: see the Directives tab</li>
+                    </ul>
+                </li>
+                <li>
+                    Fill the Delimiters:
+                    <span style="cursor: pointer"
+                          onclick="show('CreateADF', '../../image/Axway/Datamapper-ADF3.jpg')">[show]</span>.
+                    This is the default setting, you can overwrite the delimiters when you define the Record/Field.
+                    <ul>
+                        <li>
+                            <span class="keyword">Record Delimiter</span>: Fixed / Character / String / Implicit
+                            <ul>
+                                <li><span class="keyword">Fixed</span>: each Record has fixed length and system will read the Record by length.</li>
+                                <li><span class="keyword">Character</span>: each Record ends with the specify character and system will trade
+                                    the value after the character as a new Record.</li>
+                                <li><span class="keyword">String</span>: each Record ends with the specify string and system will trade the
+                                    value after the string as a new Record.</li>
+                                <li><span class="keyword">Implicit</span>: system will read the Records depend on the field delimiter setting.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="keyword">Field Delimiter</span>:
+                            <ul>
+                                <li><span class="keyword">Fixed</span>: each Field has fixed length and system will
+                                    read the Field by length.</li>
+                                <li><span class="keyword">Character</span>: each Field ends with the specify chara
+                                    cter and system will trade the value after the character as a new Field.</li>
+                                <li><span class="keyword">String</span>: each Field ends with the specify string and
+                                    system will trade the value after the string as a new Field.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    Fill the Characters:
+                    <span style="cursor: pointer"
+                          onclick="show('CreateADF', '../../image/Axway/Datamapper-ADF4.jpg')">[show]</span>
+                    Coming soon...
+                </li>
+            </ol>
+            <img id="CreateADF" src="../../image/Axway/Datamapper-Overview.jpg" />
+        </p>
+        <hr/>
+        <div class="div_chapter_title">Complete the ADF</div>
+        <p>
+            There are two elements you can choose to create a ADF, but they have different types:
+            <ul>
+                <li>
+                    <span class="keyword">Record</span>, there are two types:
+                    <ul>
+                         <li>
+                             <span class="keyword">Record</span>, if you are familiar with FF/X12/EDIFACT, this
+                             stands for segment or XML tag.
+                         </li>
+                        <li>
+                            <span class="keyword">Component</span>, it is a child of Record. If you are familiar with
+                            FF/X12/EDIFACT, this stands for component or XML tag.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <span class="keyword">Field</span>, there are three types:
+                    <ul>
+                        <li>
+                            <span class="keyword">Landmark</span>, this is the identifier of the Record.
+                        </li>
+                        <li>
+                            <span class="keyword">Normal</span>, it is a normal field in Record.
+                        </li>
+                        <li>
+                            <span class="keyword">Breakpoint</span>, it is a normal field, but it will group the same
+                            Record depends on this field.
+                        </li>
+                    </ul>
+                    <img src="../../image/Axway/Datamapper-ADF5.jpg" />
+                </li>
+            </ul>
+        </p>
+        <p>
+            Let's begin how to set the Record properties:
+            <ul>
+                <li>Name: the record name.</li>
+                <li>Description: the record description.</li>
+                <li>Directives: see the Directives part.</li>
+                <li>Delimiter: Type/Value refer to the ADF properties above.</li>
+                <li>Record Occurrences: input the number you want, if max is 0, it means no limit.</li>
+            </ul>
+            <img src="../../image/Axway/Datamapper-ADF6.jpg" />
+        </p>
+        <p>
+            Let's begin how to set the field properties:
+        <ul>
+            <li>Name: the record name.</li>
+            <li>Description: the record description.</li>
+            <li>Directives: see the Directives part.</li>
+            <li>Delimiter: Type/Value refer to the ADF properties above.</li>
+            <li>Record Occurrences: input the number you want, if max is 0, it means no limit.</li>
+        </ul>
+        <img src="../../image/Axway/Datamapper-ADF6.jpg" />
+        </p>
+        In order to let you know these elements more intuitively. Here is an example:
+        <div class="div_example">
+            Here is a Flat File: record delimiter is ~, field delimiter is *, component delimiter is |.<br/>
+            Format is <em>RECORDID*FIELD1*COMPONENT1|COMPONENT2*FIELD2</em><br/>
+            A*A01*A02|A03*A04~<br/>
+            A*A11*A12|A13*A04~<br/>
+            A*A21*A22|A23*A05~<br/>
+            A*A31*A32|A33*A04~<br/>
+            A*A41*A42|A43*A05~<br/>
+        </div>
+    </div>
+    <div id="Directives">
+        <p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
+        <p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
+    </div>
+</div>
+
+
+</body>
+</html>

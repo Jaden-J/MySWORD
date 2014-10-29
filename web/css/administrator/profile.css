@@ -1,0 +1,27 @@
+.myForm table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	margin: 10px;
+	width: 500px;
+}
+
+.myForm td,.myForm th {
+	border: solid thin #8EABAC;
+}
+
+.myForm td {
+	padding-left: 6px;
+}
+
+.myForm th {
+	background: #BFD2D2;
+	height: 25px;
+	padding-right: 6px;
+	text-align: right;
+	width: 100px;
+}
+
+.myForm ul {
+	list-style: none;
+	padding-left: 10px;
+}

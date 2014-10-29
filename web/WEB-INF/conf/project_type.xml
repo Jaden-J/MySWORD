@@ -1,0 +1,15 @@
+<ProjectType>
+  <regions>
+    <name>CORPORATE</name>
+    <name>APAC</name>
+    <name>EAST</name>
+    <name>NA</name>
+    <name>INTERNAL</name>
+  </regions>
+  <types>
+    <name>Planned</name>
+    <name>Fastlane</name>
+    <name>ReserveTask</name>
+    <name>Support</name>
+  </types>
+</ProjectType>

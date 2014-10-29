@@ -1,0 +1,72 @@
+<databases>
+    <database>
+        <databaseName>SYSTEM</databaseName>
+        <databaseType>SQL Server</databaseType>
+        <driverClass>com.microsoft.sqlserver.jdbc.SQLServerDriver</driverClass>
+        <databaseURL>jdbc:sqlserver://10.213.20.8:1433;databaseName=mysword</databaseURL>
+        <username>cei</username>
+        <password>Schenker1</password>
+        <timeout>3000</timeout>
+        <maxThread>5</maxThread>
+        <currentThread>0</currentThread>
+        <description></description>
+        <lasteditby>Administrator</lasteditby>
+        <lasteditdt>2014-08-28 12:00:00</lasteditdt>
+    </database>
+    <database>
+        <databaseName>KNOWLEDGE_SHARING</databaseName>
+        <databaseType>SQL Server</databaseType>
+        <driverClass>com.microsoft.sqlserver.jdbc.SQLServerDriver</driverClass>
+        <databaseURL>jdbc:sqlserver://10.213.20.8:1433;databaseName=mysword</databaseURL>
+        <username>cei</username>
+        <password>Schenker1</password>
+        <timeout>3000</timeout>
+        <maxThread>5</maxThread>
+        <currentThread>0</currentThread>
+        <description></description>
+        <lasteditby>Administrator</lasteditby>
+        <lasteditdt>2014-08-28 12:00:00</lasteditdt>
+    </database>
+    <database>
+        <databaseName>KNOWLEDGE_BASE</databaseName>
+        <databaseType>SQL Server</databaseType>
+        <driverClass>com.microsoft.sqlserver.jdbc.SQLServerDriver</driverClass>
+        <databaseURL>jdbc:sqlserver://10.213.20.8:1433;databaseName=mysword</databaseURL>
+        <username>cei</username>
+        <password>Schenker1</password>
+        <timeout>3000</timeout>
+        <maxThread>5</maxThread>
+        <currentThread>0</currentThread>
+        <description></description>
+        <lasteditby>Administrator</lasteditby>
+        <lasteditdt>2014-08-28 12:00:00</lasteditdt>
+    </database>
+    <database>
+        <databaseName>PROJECT_LIST</databaseName>
+        <databaseType>SQL Server</databaseType>
+        <driverClass>com.microsoft.sqlserver.jdbc.SQLServerDriver</driverClass>
+        <databaseURL>jdbc:sqlserver://10.213.20.8:1433;databaseName=mysword</databaseURL>
+        <username>cei</username>
+        <password>Schenker1</password>
+        <timeout>3000</timeout>
+        <maxThread>5</maxThread>
+        <currentThread>0</currentThread>
+        <description></description>
+        <lasteditby>Administrator</lasteditby>
+        <lasteditdt>2014-08-28 12:00:00</lasteditdt>
+    </database>
+    <database>
+        <databaseName>LOG</databaseName>
+        <databaseType>SQLITE</databaseType>
+        <driverClass>org.sqlite.JDBC</driverClass>
+        <databaseURL>jdbc:sqlite:D:\\logs\\mysword.db</databaseURL>
+        <username></username>
+        <password></password>
+        <timeout>3000</timeout>
+        <maxThread>5</maxThread>
+        <description></description>
+        <currentThread>0</currentThread>
+        <lasteditby>Administrator</lasteditby>
+        <lasteditdt>2014-08-28 12:00:00</lasteditdt>
+    </database>
+</databases>

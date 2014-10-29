@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <title>Knowledge Sharing Confirmation</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <style type="text/css">
+    	body{
+    		font-size:12px;
+    		font-family:"DB Office";
+    	}
+        table {
+            padding: 0px;
+            border-collapse:collapse;
+            border-spacing:0;
+        }
+    	th {
+            height: 20px;
+            background: #D8D8EB;
+    		font-size: 16px;
+    		text-align: center;
+            border: solid thin #BEBEBE;
+    	}
+    	td {
+            margin: 0px;
+            padding: 2px;
+    		font-size:12px;
+    		font-family:"DB Office";
+            border: solid thin #BEBEBE;
+    	}
+    </style>
+      <script type="text/javascript">
+          function test() {
+              alert(0);
+          }
+      </script>
+  </head>
+  <body>
+    Dears,<br/><br/>
+    This is a system email, kindly please do not reply this email.<br/><br/>
+    You can access the knowledge sharing page by clicking <a href="http://@hostname:@port/@context_path/">here</a><br/><br/>
+    There are some knowledge sharings that haven't been approved. Please refer to the table below:<br/>
+    <table>
+        <tbody>
+            <tr>
+                <th width="130">Share ID</th>
+                <th width="500">Subject</th>
+                <th width="100">Poster</th>
+                <th width="130">Post Date</th>
+                <th width="80"></th>
+            </tr>
+            @knowledgeSharings
+        </tbody>
+    </table>
+  </body>
+</html>

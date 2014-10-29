@@ -1,0 +1,16 @@
+.errorBox {
+    color: #B94A48;
+    border-radius: 3px;
+    background-color: #F5E6E6;
+    padding: 3px 7px;
+    font-family: Arial, Helvetica, sans-serif;
+    display: none;
+}
+
+.errorBox>header{
+    font-size: 16px;
+}
+
+.errorBox a:visited {
+    color: #0033BB;
+}

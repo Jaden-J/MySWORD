@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <title>Axway</title>
+    <script type="text/javascript" src="../../js/jquery/jquery.js"></script>
+    <script type="text/javascript" src="../../js/jquery/jquery-ui.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../css/main.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/jquery/jquery-ui.css"/>
+</head>
+<style>
+    .tool {
+        background: #aec8ff;
+        border: solid thin #009999;
+        border-radius: 5px;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 14px;
+        margin: 10px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        vertical-align: middle;
+        width: 150px;
+    }
+    .tool:hover {
+        font-weight: bold;
+        color: #e6f0ff;
+        background: #FF9900;
+    }
+    .component {
+        border: solid 2px #009999;
+        margin-top: 15px;
+        padding: 8px;
+    }
+    .component_name {
+        background: #F5F5FF;
+        height: 30px;
+        font-size: 20px;
+        line-height: 30px;
+        margin-top: -30px;
+        padding: 2px;
+        display: inline-block;
+    }
+</style>
+<script>
+    $(document).ready(function(){
+        $(document).tooltip();
+    });
+</script>
+<body>
+<div style="width: 1300px;">
+    <div class="component">
+        <div class="component_name">Axway</div>
+        <br/>
+        <div class="tool" title="You can create ADF, do mapping here.">Datamapper</div>
+        <div class="component">
+            <div class="component_name">XIB</div>
+            <br/>
+            <div class="tool">Alert Manager</div>
+            <div class="tool">Datamapper Builder</div>
+            <div class="tool">Editor</div>
+            <div class="tool">Integration Manager</div>
+            <div class="tool">Message Log</div>
+            <div class="tool">Metadata Browser</div>
+            <div class="tool">Trace View</div>
+            <div class="tool">User Manager</div>
+        </div>
+        <div class="component">
+            <div class="component_name">XFB</div>
+            <br/>
+            <div class="tool">XFB</div>
+            <div class="tool">Designer</div>
+        </div>
+        <div class="component">
+            <div class="component_name">XSR</div>
+            <br/>
+            <div class="tool">XSR</div>
+        </div>
+        <div class="component">
+            <div class="component_name">Passport</div>
+            <br/>
+            <div class="tool">Passport</div>
+        </div>
+        <div class="component">
+            <div class="component_name">SWORD/SWING</div>
+            <br/>
+            <div class="tool">SWORD</div>
+            <div class="tool">SWING</div>
+            <div class="tool">Comsys</div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

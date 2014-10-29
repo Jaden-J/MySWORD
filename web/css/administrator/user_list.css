@@ -1,0 +1,16 @@
+.myTable ul {
+	list-style: none;
+	margin: 0px;
+	padding: 2px;
+}
+
+.actionImg {
+	cursor: pointer;
+	display: inline-block;
+}
+
+.contentLink {
+	color: blue;
+	cursor: pointer;
+	text-decoration: underline;
+}

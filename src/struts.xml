@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+    <package name="home" namespace="/" extends="root_package">
+        <action name="Navigator" class="mysword.action.home.NavigatorAction">
+            <result name="success">/WEB-INF/web/home/navigator.jsp</result>
+            <result name="*" type="json"></result>
+        </action>
+        <action name="Home" class="mysword.action.home.HomeAction">
+            <result name="success">/WEB-INF/web/index.jsp</result>
+            <result name="success_home">/WEB-INF/web/home.jsp</result>
+            <result name="success_about">/WEB-INF/web/about.jsp</result>
+            <result name="*" type="json"></result>
+        </action>
+    </package>
+
+    <package name="knowledgeBase" namespace="/knowledge_base" extends="root_package">
+        <action name="KnowledgeBase" class="mysword.action.knowledgebase.KnowledgeBaseAction">
+            <result name="success_server">/WEB-INF/web/knowledge_base/server.jsp</result>
+            <result name="success_comsys">/WEB-INF/web/knowledge_base/comsys.jsp</result>
+            <result name="success_schenker">/WEB-INF/web/knowledge_base/schenker.jsp</result>
+            <result name="success_ssc">/WEB-INF/web/knowledge_base/ssc.jsp</result>
+            <result name="success_edi">/WEB-INF/web/knowledge_base/edi.jsp</result>
+            <result name="success_edifact">/WEB-INF/web/knowledge_base/edifact.jsp</result>
+            <result name="success_flatfile">/WEB-INF/web/knowledge_base/flatfile.jsp</result>
+            <result name="success_regularExpression">/WEB-INF/web/knowledge_base/regular_expression.jsp</result>
+            <result name="success_x12">/WEB-INF/web/knowledge_base/x12.jsp</result>
+            <result name="success_xml">/WEB-INF/web/knowledge_base/xml.jsp</result>
+            <result name="*" type="json"></result>
+        </action>
+        <action name="HowTo" class="mysword.action.knowledgebase.HowToAction">
+            <result name="success">/WEB-INF/web/knowledge_base/how_to.jsp</result>
+            <result name="download_file" type="stream">
+                <param name="contentType">application/octet-stream</param>
+                <param name="inputName">fileStream</param>
+                <param name="contentDisposition">
+                    attachment;filename="${filename}"
+                </param>
+                <param name="bufferSize">2048</param>
+            </result>
+            <result name="*" type="json"></result>
+        </action>
+    </package>
+
+    <package name="knowledgeSharing" namespace="/knowledge_sharing" extends="root_package">
+        <action name="KnowledgeSharing" class="mysword.action.knowledgesharing.KnowledgeSharingAction">
+            <result name="success">/WEB-INF/web/knowledge_sharing/knowledge_sharing.jsp</result>
+            <result name="success_show" type="stream">
+                <param name="contentType">application/octet-stream</param>
+                <param name="inputName">fileStream</param>
+                <param name="contentDisposition">
+                    attachment;filename="${filename}"
+                </param>
+                <param name="bufferSize">2048</param>
+            </result>
+            <result name="success_updateknowledge">/WEB-INF/web/knowledge_sharing/knowledge_result.jsp</result>
+            <result name="*" type="json"></result>
+        </action>
+	</package>
+
+    <package name="project" namespace="/project" extends="root_package">
+        <action name="ProjectList" class="mysword.action.project.ProjectListAction">
+            <result name="success">/WEB-INF/web/project/project_list.jsp</result>
+            <result name="success_sync">/WEB-INF/web/project/project_sync.jsp</result>
+            <result name="success_print">/WEB-INF/web/project/project_cards.jsp</result>
+            <result name="input">/WEB-INF/web/project/project_list.jsp</result>
+            <result name="success_excel" type="stream">
+                <param name="contentType">application/octet-stream</param>
+                <param name="inputName">fileStream</param>
+                <param name="contentDisposition">
+                    attachment;filename="${weekStr}.xlsx"
+                </param>
+                <param name="bufferSize">2048</param>
+            </result>
+            <result name="success_cards" type="stream">
+                <param name="contentType">application/octet-stream</param>
+                <param name="inputName">fileStream</param>
+                <param name="contentDisposition">
+                    attachment;filename="${weekStr}_cards.xlsx"
+                </param>
+                <param name="bufferSize">2048</param>
+            </result>
+            <result name="*" type="json"></result>
+        </action>
+    </package>
+
+    <package name="system" namespace="/system" extends="root_package">
+        <action name="Config" class="mysword.action.system.ConfigAction">
+            <result name="success">/WEB-INF/web/system/configuration.jsp</result>
+            <result name="*" type="json"></result>
+        </action>
+        <action name="Profile" class="mysword.action.system.ProfileAction">
+            <result name="show_list">/WEB-INF/web/system/profile_list.jsp</result>
+            <result name="show_one">/WEB-INF/web/system/profile.jsp</result>
+            <result name="*" type="json"></result>
+        </action>
+        <action name="Access" class="mysword.action.system.AccessAction">
+            <result name="success">/WEB-INF/web/system/access_list.jsp</result>
+            <result name="*" type="json"></result>
+        </action>
+        <action name="Database" class="mysword.action.system.DatabaseAction">
+            <result name="success">/WEB-INF/web/system/database_list.jsp</result>
+            <result name="*" type="json"></result>
+        </action>
+        <action name="Schedule" class="mysword.action.system.ScheduleAction">
+            <result name="success">/WEB-INF/web/system/schedule_list.jsp</result>
+            <result name="*" type="json"></result>
+        </action>
+        <action name="Log" class="mysword.action.home.HomeAction">
+            <result name="success">/WEB-INF/web/system/log.jsp</result>
+            <result name="*" type="json"></result>
+        </action>
+    </package>
+
+	<package name="tools" namespace="/tools" extends="root_package">
+	 	<action name="TestTool" class="mysword.action.tools.TestToolAction">
+			<result name="success">/WEB-INF/web/tools/test_tool.jsp</result>
+			<result name="*" type="json"></result>
+		</action>
+        <action name="MapTool" class="mysword.action.tools.MapToolAction">
+            <result name="success">/WEB-INF/web/tools/map_tool.jsp</result>
+            <result name="*" type="json"></result>
+        </action>
+        <action name="SuppInfo" class="mysword.action.tools.SuppInfoAction">
+            <result name="success">/WEB-INF/web/tools/suppinfo.jsp</result>
+            <result name="*" type="json"></result>
+        </action>
+		<action name="Base64" class="mysword.action.tools.Base64Action">
+			<result name="success">/WEB-INF/web/tools/base64.jsp</result>
+			<result name="*" type="json"></result>
+		</action>
+		<action name="Inhouse" class="mysword.action.tools.InhouseAction">
+			<result name="success_inhouse">/WEB-INF/web/tools/inhouse.jsp</result>
+        </action>
+        <action name="RegularExpression" class="mysword.action.tools.RegularExpressionAction">
+			<result name="success_regular_expression">/WEB-INF/web/tools/regular_expression.jsp</result>
+		</action>
+	</package>
+
+	<package name="root_package" abstract="true" extends="struts-default">
+		<result-types>
+			<result-type name="json" class="org.apache.struts2.json.JSONResult" />
+		</result-types>
+
+		<interceptors>
+			<interceptor-stack name="myStack">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="auth"></interceptor-ref>
+			</interceptor-stack>
+			<interceptor name="auth" class="mysword.interceptor.AuthInterceptor" />
+		</interceptors>
+
+		<default-interceptor-ref name="myStack" />
+
+        <default-action-ref name="Home"/>
+
+		<global-results>
+			<result name="exception">/error.jsp</result>
+            <result name="permissionDenied">/error.jsp</result>
+		</global-results>
+
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="exception"></exception-mapping>
+            <exception-mapping exception="java.lang.ClassNotFoundException" result="exception"></exception-mapping>
+        </global-exception-mappings>
+
+        <action name="error" class="mysword.action.system.SystemAction" method="error">
+            <result name="*">/WEB-INF/web/error.jsp</result>
+        </action>
+
+        <action name="logout" class="mysword.action.system.SystemAction" method="logout">
+            <result name="*">/logout.jsp</result>
+        </action>
+
+        <action name="test" class="mysword.action.test.TestAction">
+            <result name="*" type="json"></result>
+        </action>
+	</package>
+</struts>
