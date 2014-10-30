@@ -1,0 +1,271 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Smart Wizard 2 - Basic Example - a javascript jQuery wizard control plugin</title>
+
+    <link href="css/smart_wizard.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/input.css">
+    <link rel="stylesheet" href="css/gh-buttons.css">
+    <link rel="stylesheet" href="css/box.css">
+    <link rel="stylesheet" href="css/easytabs/easytabs.css">
+    <link rel="stylesheet" href="css/icheck/all.css">
+    <link rel="stylesheet" href="css/tools/map_tool.css">
+    <script type="text/javascript" src="js/jquery/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.smartWizard.js"></script>
+    <script src="js/jquery.hashchange.min.js" type="text/javascript"></script>
+    <script src="js/jquery.easytabs.min.js" type="text/javascript"></script>
+    <script src="js/icheck.min.js" type="text/javascript"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script type="text/javascript">
+        var listDone = false;
+        var resultList = new Array();
+        $(document).ready(function () {
+            initWizard();
+            initRevisionTabs();
+            $("#refresh").on('click', function(){getRevisions();});
+        });
+
+        function getRevisions() {
+            $('#loading').css('display', 'inline-block');
+            $.ajax({
+                type : 'post',
+                url : 'tools/MapTool!listRevisions',
+                data : {
+                    'mapName': $('#mapName').val()
+                },
+                async: false,
+                dataType: 'json',
+                complete: function(response, returnType) {
+                    if(response.responseJSON == null || response.responseJSON == "") {
+                        post("/${sessionScope.mysword_path}/error", "_self", {error: response.responseText});
+                    } else {
+                        showRevisionItems("dev", response.responseJSON.revisions.DEV);
+                        showRevisionItems("int", response.responseJSON.revisions.INT);
+                        showRevisionItems("test", response.responseJSON.revisions.TEST);
+                        showRevisionItems("prod", response.responseJSON.revisions.PROD);
+                    }
+                }
+            });
+            $('#loading').css('display', 'none');
+            $('.panel-container input').iCheck({
+                checkboxClass: 'icheckbox_minimal-red',
+                radioClass: 'iradio_minimal-red'
+            });
+        }
+
+        function showRevisionItems(id, dataArray){
+            $('#'+id).html("");
+            if(dataArray!=null||dataArray!="") {
+                for (var i=0; i<dataArray.length; i++) {
+                    $('#'+id).append($("<tr>").append($("<td>").append($('<input type="checkbox" name="revision"/>'))).append($("<td>").html(id+"-"+dataArray[i].revision)).append($("<td>").html(dataArray[i].revision)).append($("<td>").html(dataArray[i].date)).append($("<td>").html(dataArray[i].message)));
+                }
+            }
+        }
+
+        function initRevisionTabs() {
+            $('#tab-container').easytabs();
+        }
+
+        function initWizard() {
+            $('#wizard').smartWizard({
+                transitionEffect:'slideleft',
+                onLeaveStep:leaveAStepCallback,
+                onShowStep:showAStep,
+                onFinish:onFinishCallback,
+                includeCancelButton:true,
+                enableCancelButton:true,
+                cancelClass:'button wizardButton',
+                nextClass:'button wizardButton',
+                finishClass:'button wizardButton',
+                previousClass:'button wizardButton'
+            });
+            jQuery.validator.addMethod("mapName", function (value, element) {return this.optional(element) || /^(E_MAP_|A_MAP_)/.test(value);},"Map name should starts from &quot;E_MAP_&quot; or &quot;A_MAP_&quot;");
+        }
+
+        function leaveAStepCallback(obj){
+            var step_num= obj.attr('rel');
+            if(doValidation(step_num)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function showAStep(curStep, preStep){
+            var cur_step_num = curStep.attr('rel');
+            $(".mapName").html($("#mapName").val());
+            $("#revisions").html("");
+            var checkedItems = $("input[name='revision']:checked");
+            resultList = new Array();
+            for(var i=0; i<checkedItems.length; i++){
+                resultList.push(checkedItems[i].value);
+                $("#revisions").append($("<li>").html(checkedItems[i].parentNode.parentNode.innerText));
+            }
+            if(cur_step_num == 2) {
+                if(listDone) {
+                    return;
+                }
+                listDone = true;
+                getRevisions();
+            }
+        }
+
+        function padRight(str, char, length){
+            for(var i=str.length; i<length; i++) {
+                str = str+char;
+            }
+            return str;
+        }
+
+        function onFinishCallback(){
+        }
+
+        function doValidation(step_num) {
+            if(!$("#form"+step_num).is("form")) {
+                return true;
+            }
+            $("#form"+step_num).validate({
+                rules: {
+                    mapName: {
+                        required: true,
+                        mapName: true
+                    },
+                    revision: {
+                        required: true
+                    }
+                },
+                messages: {
+                    mapName:{
+                        required: "Map name is mandatory!!!",
+                        mapName: "Map name should starts with E_MAP_ or A_MAP_!!!"
+                    },
+                    revision:{
+                        required: "Please choose a revision!!!"
+                    }
+                },
+                highlight: function(element, errorClass, validClass) {
+                    $(element).addClass("errorClass");
+                },
+                unhighlight: function(element, errorClass, validClass) {
+                    $(element).removeClass("errorClass");
+                },
+                errorContainer: "#errorBox",
+                errorLabelContainer: "#errorBox ul",
+                wrapper: "li",
+                ignore: ""
+            });
+            return $("#form"+step_num).valid();
+        }
+    </script>
+
+</head>
+<body>
+<div>
+<div class="actionDiv activeDiv">
+    <div style="height: 60px"><img src="image/operations/download.png"/></div>
+    <div style="height: 30px">Download</div>
+</div>
+<div class="actionDiv">
+    <div style="height: 60px"><img src="image/operations/detail.png"/></div>
+    <div style="height: 30px">Revisions</div>
+</div>
+<div class="actionDiv">
+    <div style="height: 60px"><img src="image/operations/zip.png"/></div>
+    <div style="height: 30px">CheckIn</div>
+</div>
+<div class="actionDiv">
+    <div style="height: 60px"><img src="image/operations/upload.png"/></div>
+    <div style="height: 30px">Rollout</div>
+</div>
+<div class="actionDiv">
+    <div style="height: 60px"><img src="image/operations/unzip.png"/></div>
+    <div style="height: 30px">Getmap</div>
+</div>
+
+<div style="height:2px; background: #000000; margin: 5px 0px"></div>
+
+<div id="errorBox" class="errorBox">
+    <header>Error</header>
+    <ul style="margin: 0px"></ul>
+</div>
+<table align="center" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td>
+            <div id="wizard" class="swMain">
+                <ul>
+                    <li><a href="#step-1">
+                        <span class="stepNumber">1</span>
+                        <span class="stepDesc">
+                           Map Name<br/>
+                           <small>Input the map name</small>
+                        </span>
+                    </a></li>
+                    <li><a href="#step-2">
+                        <span class="stepNumber">2</span>
+                        <span class="stepDesc">
+                           Revisions<br/>
+                           <small>Revisions in SVN</small>
+                        </span>
+                    </a></li>
+                    <li><a href="#step-3">
+                        <span class="stepNumber">3</span>
+                        <span class="stepDesc">
+                           Download<br/>
+                           <small>Confirm the settings</small>
+                        </span>
+                    </a></li>
+                </ul>
+                <div id="step-1" style="height: 370px">
+                    <h2 class="StepTitle">Please input the map name</h2>
+                    <form id="form1" method="post" action="">
+                        <p>
+                            <label for="mapName" class="required inputLabel">Map Name</label>
+                            <input id="mapName" name="mapName" type="text">
+                            &nbsp;&nbsp;Map name should starts from "E_MAP_" or "A_MAP_".
+                        </p>
+                    </form>
+                </div>
+                <div id="step-2" style="height: 370px">
+                    <h2 class="StepTitle">Please select the revisions</h2>
+                    <div style="margin-top: 5px; margin-bottom: 5px"><label class="inputLabel">Map Name</label><span class="mapName"></span>&nbsp;<button id="refresh" class="button">Refresh</button><img id="loading" src="image/operations/loading.gif" /></div>
+                    <form id="form2" method="post" action="">
+                    <div id="tab-container" class="tab-container">
+                        <ul class='etabs'>
+                            <li class='tab'><a href="#tabs-dev">Development</a></li>
+                            <li class='tab'><a href="#tabs-int">Integration</a></li>
+                            <li class='tab'><a href="#tabs-test">Test</a></li>
+                            <li class='tab'><a href="#tabs-prod">Production</a></li>
+                        </ul>
+                        <div class="panel-container">
+                            <div id="tabs-dev">
+                                <table id="dev"></table>
+                            </div>
+                            <div id="tabs-int">
+                                <table id="int"></table>
+                            </div>
+                            <div id="tabs-test">
+                                <table id="test"></table>
+                            </div>
+                            <div id="tabs-prod">
+                                <table id="prod"></table>
+                            </div>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+                <div id="step-3" style="height: 370px">
+                    <h2 class="StepTitle">Confirmation</h2>
+                    <br/>
+                    <div><label class="inputLabel">Map Name</label><span class="mapName"></span></div>
+                    <br/>
+                    <ul id="revisions"></ul>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+</div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+.label{
+    text-align: right;
+    font-size: 14px;
+    font-weight: bold;
+    width: 75px;
+}
+.label:after {
+    content: ":";
+}

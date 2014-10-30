@@ -1,0 +1,12 @@
+body {
+    background: #F5F5FF;
+    color: #454545;
+    font-family: 'DB Office';
+    font-size: 12px;;
+}
+hr {
+    border-top: 2px ridge #666666;
+}
+input {
+    padding-left: 2px;
+}
